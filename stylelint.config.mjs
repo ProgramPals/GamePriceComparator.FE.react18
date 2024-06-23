@@ -5,3 +5,5 @@ const config = {
     'stylelint-config-recess-order',
   ]
 }
+
+export default config;
