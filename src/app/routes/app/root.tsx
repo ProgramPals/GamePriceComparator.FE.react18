@@ -8,7 +8,7 @@ import {
   useSubmit,
 } from "react-router-dom";
 import { getContacts, createContact } from "../../contacts";
-import { RootState } from '../../store'
+import type { RootState } from '../../store'
 
 // auth
 import { useSelector } from 'react-redux'
