@@ -1,16 +1,40 @@
 {
+  "root": true,
   "extends": [
+    // ESLint TS
     "eslint:recommended",
-    "react-app",
+    "plugin:@typescript-eslint/recommended",
+    // React + JSX related
+    "plugin:react/recommended",
     "plugin:react/jsx-runtime",
-    "prettier"
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    // JSON rules
+    "plugin:jsonc/recommended-with-jsonc",
+    // ESLint style rules
+    "plugin:@stylistic/recommended-extends"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "html", // html support (will be removed later)
+    "@stylistic" // ESLint style plugin
   ],
   "parser": "@typescript-eslint/parser",
-  "parserOptions": { "project": true, "tsconfigRootDir": "./" },
-  "plugins": ["@typescript-eslint"],
-  "root": true,
-  "ignorePatterns": ["dist"],
+  "parserOptions": {
+    "ecmaVersion": "latest", // or 2021, but adjust tsconfig.json targets
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "extraFileExtensions": [".json"],
+    "project": ["./tsconfig.json"] // hook to ts linter
+  },
   "rules": {
+    "@typescript-eslint/ban-ts-comment": 0, // TODO: remove this line
+    "@typescript-eslint/no-explicit-any": 0, // TODO: remove this line
     "@typescript-eslint/consistent-type-imports": [
       2,
       { "fixStyle": "separate-type-imports" }
@@ -27,10 +51,41 @@
         ]
       }
     ]
-
   },
   "overrides": [
-    { "files": ["*.{c,m,}{t,j}s", "*.{t,j}sx"] },
-    { "files": ["*{test,spec}.{t,j}s?(x)"], "env": { "jest": true } }
-  ]
+    {
+      "files": ["*.json", "*.jsonc"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        // turn off redux related rules (output warnings without)
+        "@typescript-eslint/no-restricted-imports": "off",
+        "@typescript-eslint/consistent-type-imports": "off"
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "parser": "espree",
+      "parserOptions": {
+        "ecmaVersion": 2021,
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        }
+      },
+      "rules": {
+        "@typescript-eslint/no-restricted-imports": "off",
+        "@typescript-eslint/consistent-type-imports": "off"
+      }
+    }
+  ],
+  "ignorePatterns": ["dist"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }

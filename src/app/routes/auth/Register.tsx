@@ -1,30 +1,29 @@
 // Register.tsx
-import type React from 'react';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import type { AppDispatch, RootState } from '../../store';
-import { register } from '../../../features/AuthSlice';
+import type React from 'react'
+import { useState } from 'react'
+import { useAppDispatch, useAppSelector } from '@/app/hooks'
+import type { AppDispatch, RootState } from '../../store'
+import { register } from '../../../features/AuthSlice'
 
 import {
   redirect,
-} from "react-router-dom";
+} from 'react-router-dom'
 
 export async function action() {
-  const dispatch = useDispatch<AppDispatch>();
-  return redirect(`/`);
+  return redirect(`/`)
 }
 
 export function Component() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const dispatch = useDispatch<AppDispatch>();
-  const { isLoading, error } = useSelector((state: RootState) => state.Auth);
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const dispatch = useAppDispatch<AppDispatch>()
+  const { isLoading, error } = useAppSelector((state: RootState) => state.Auth)
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    dispatch(register({ username, email, password }));
-  };
+    e.preventDefault()
+    dispatch(register({ username, email, password }))
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -36,7 +35,7 @@ export function Component() {
           type="text"
           id="username"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={e => setUsername(e.target.value)}
           required
           aria-required="true"
         />
@@ -47,7 +46,7 @@ export function Component() {
           type="email"
           id="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
           required
           aria-required="true"
         />
@@ -58,7 +57,7 @@ export function Component() {
           type="password"
           id="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
           required
           aria-required="true"
         />
@@ -67,5 +66,5 @@ export function Component() {
         {isLoading ? 'Registering...' : 'Register'}
       </button>
     </form>
-  );
-};
+  )
+}

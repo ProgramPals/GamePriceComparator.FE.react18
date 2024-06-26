@@ -1,25 +1,25 @@
-import { Form, useLoaderData } from "react-router-dom";
-import { getContact, updateContact } from "../../contacts";
+import { Form, useLoaderData } from 'react-router-dom'
+import { getContact, updateContact } from '../../contacts'
 
-// @ts-ignore
-export const loader = async({params}) => {
+// @ts-expect-error
+export const loader = async ({ params }) => {
   const contact = await getContact(params.contactId)
-  if(!contact) {
-    throw new Error("", {
-      // @ts-ignore
+  if (!contact) {
+    throw new Error('', {
+      // @ts-expect-error
       status: 404,
-      statusText: "Not found"
+      statusText: 'Not found',
     })
   }
-  return {contact}
+  return { contact }
 }
 
-// @ts-ignore
+// @ts-expect-error
 export async function action({ request, params }) {
-  let formData = await request.formData();
+  const formData = await request.formData()
   return updateContact(params.contactId, {
-    favorite: formData.get("favorite") === "true",
-  });
+    favorite: formData.get('favorite') === 'true',
+  })
 }
 
 export function Component() {
@@ -33,30 +33,36 @@ export function Component() {
   //   favorite: true,
   // };
 
-  // @ts-ignore
-  const { contact } = useLoaderData();
+  // @ts-expect-error
+  const { contact } = useLoaderData()
 
   return (
     <div id="contact">
       <div>
         <img
           key={contact.avatar}
+          alt=""
           src={
-            contact.avatar ||
-            `https://robohash.org/${contact.id}.png?size=200x200`
+            contact.avatar
+            || `https://robohash.org/${contact.id}.png?size=200x200`
           }
         />
       </div>
 
       <div>
         <h1>
-          {contact.first || contact.last ? (
-            <>
-              {contact.first} {contact.last}
-            </>
-          ) : (
-            <i>No Name</i>
-          )}{" "}
+          {contact.first || contact.last
+            ? (
+                <>
+                  {contact.first}
+                  {' '}
+                  {contact.last}
+                </>
+              )
+            : (
+                <i>No Name</i>
+              )}
+          {' '}
           <Favorite contact={contact} />
         </h1>
 
@@ -64,7 +70,8 @@ export function Component() {
           <p>
             <a
               target="_blank"
-              href={`https://twitter.com/${contact.twitter}`} rel="noreferrer"
+              href={`https://twitter.com/${contact.twitter}`}
+              rel="noreferrer"
             >
               {contact.twitter}
             </a>
@@ -83,10 +90,10 @@ export function Component() {
             onSubmit={(event) => {
               if (
                 !confirm(
-                  "Please confirm you want to delete this record."
+                  'Please confirm you want to delete this record.',
                 )
               ) {
-                event.preventDefault();
+                event.preventDefault()
               }
             }}
           >
@@ -95,27 +102,27 @@ export function Component() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-// @ts-ignore
-function Favorite({ contact }) {
-  const favorite = contact.favorite;
+// @ts-expect-error
+function Favorite({ contact }: Props) {
+  const favorite = contact.favorite
   return (
     <Form method="post">
       <button
         name="favorite"
-        value={favorite ? "false" : "true"}
+        value={favorite ? 'false' : 'true'}
         aria-label={
           favorite
-            ? "Remove from favorites"
-            : "Add to favorites"
+            ? 'Remove from favorites'
+            : 'Add to favorites'
         }
       >
-        {favorite ? "★" : "☆"}
+        {favorite ? '★' : '☆'}
       </button>
     </Form>
-  );
+  )
 }
 
-Component.displayName = "Contact";
+Component.displayName = 'Contact'

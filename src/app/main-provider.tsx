@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
-import { MainErrorFallback } from '@/components/errors/main';
+import * as React from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
+import { MainErrorFallback } from '@/components/errors/main'
 
 type AppProviderProps = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 export const AppProvider = ({ children }: AppProviderProps) => {
   return (
@@ -16,5 +16,5 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         {children}
       </ErrorBoundary>
     </React.Suspense>
-  );
-};
+  )
+}

@@ -1,13 +1,13 @@
-import { checkAuth } from "@/features/AuthSlice";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { checkAuth } from '@/features/AuthSlice'
+import { useAppDispatch } from '@/app/hooks'
+
+import { useEffect } from 'react'
 
 // @ts-ignore
 export const useAuth = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(checkAuth())
   }, [dispatch])
-};
-
+}

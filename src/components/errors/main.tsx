@@ -9,5 +9,5 @@ export const MainErrorFallback = () => {
         Refresh
       </button>
     </div>
-  );
-};
+  )
+}

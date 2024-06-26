@@ -1,19 +1,19 @@
-import { RouterProvider } from 'react-router-dom';
-import { useAuth } from '@/hooks/useAuth';
+import { RouterProvider } from 'react-router-dom'
+import { useAuth } from '@/hooks/useAuth'
 
-import { AppProvider } from './main-provider';
-import { router } from './routes';
+import { AppProvider } from './main-provider'
+import { router } from './routes'
 
 const AppRouter = () => {
-  return <RouterProvider router={router} />;
-};
+  return <RouterProvider router={router} />
+}
 
 const App = () => {
   useAuth()
 
   return (
     <AppProvider>
-        <AppRouter />
+      <AppRouter />
     </AppProvider>
   )
 }

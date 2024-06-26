@@ -1,7 +1,7 @@
 {
   // Disable default formatter
   "prettier.enable": false,
-  "eslint.useFlatConfig": true,
+  "eslint.useFlatConfig": false,
 
   // Auto fix (never, explicit, always)
   "editor.codeActionsOnSave": {
@@ -25,28 +25,28 @@
     { "rule": "*semi", "severity": "off" }
   ],
 
-  // Enable eslint for all supported languages
+  // what eslint currently supports
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "vue",
     "html",
-    "markdown",
     "json",
     "jsonc",
-    "yaml",
-    "toml",
-    "xml",
-    "gql",
-    "graphql",
-    "astro",
-    "css",
-    "less",
-    "scss",
-    "pcss",
-    "postcss"
+
+    // can be manually configured in the future
+    // "vue",
+    // "markdown",
+    // "yaml",
+    // "toml",
+
+    // styles are handled by stylelint
+    // "css",
+    // "less",
+    // "scss",
+    // "pcss",
+    // "postcss"
   ],
 
   "stylelint.validate": [

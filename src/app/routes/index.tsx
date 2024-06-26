@@ -2,13 +2,13 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-} from "react-router-dom";
+} from 'react-router-dom'
 
 import {
   AuthenticationGuard as PrivateRoute,
-} from "@/app/routes/auth/AuthenticationGuard";
+} from '@/app/routes/auth/AuthenticationGuard'
 
-import ErrorPage from "../ui-components/error-page";
+import ErrorPage from '../ui-components/error-page'
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,15 +32,15 @@ export const router = createBrowserRouter(
           />
           <Route
             path="contacts/:contactId/destroy"
-            lazy={() => import('./app/delete')} 
+            lazy={() => import('./app/delete')}
             errorElement={<div>Oops! There was an error.</div>}
           />
           <Route path="logout" />
         </Route>
       </Route>
-    </Route>
-  )
-);
+    </Route>,
+  ),
+)
 
 // left for reference
 // export const router = createBrowserRouter([
@@ -93,4 +93,3 @@ export const router = createBrowserRouter(
 //     ],
 //   },
 // ]);
-
