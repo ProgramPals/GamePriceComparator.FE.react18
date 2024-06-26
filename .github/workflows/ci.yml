@@ -1,5 +1,9 @@
 name: CI
 
+# prevent husky from CI/CD
+env:
+  HUSKY: 0
+  
 on:
   push:
     branches:
