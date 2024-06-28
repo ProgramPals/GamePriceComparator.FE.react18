@@ -1,9 +1,8 @@
-// Register.tsx
 import type React from 'react'
 import { useState } from 'react'
-import { useAppDispatch, useAppSelector } from '@/app/hooks'
+import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import type { AppDispatch, RootState } from '../../store'
-import { register } from '../../../features/AuthSlice'
+import { register } from '../../../features/user/api/AuthSlice'
 
 import {
   redirect,

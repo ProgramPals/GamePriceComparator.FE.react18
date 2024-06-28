@@ -1,5 +1,5 @@
 import { Form, useLoaderData } from 'react-router-dom'
-import { getContact, updateContact } from '../../contacts'
+import { getContact, updateContact } from '@/features/contacts/api/contacts'
 
 // @ts-expect-error
 export const loader = async ({ params }) => {

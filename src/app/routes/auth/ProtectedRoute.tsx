@@ -1,6 +1,6 @@
+import { useAppSelector } from '@/hooks/redux'
 import type * as React from 'react'
-import { useAppSelector } from '@/app/hooks'
-import type { RootState } from '../../store'
+import type { RootState } from '@/app/store'
 import {
   Outlet,
   Navigate,
@@ -12,7 +12,7 @@ export type AuthenticationGuardProps = {
   redirectPath?: string
 }
 
-export const AuthenticationGuard: React.FC<AuthenticationGuardProps> = ({
+export const ProtectedRoute: React.FC<AuthenticationGuardProps> = ({
   redirectPath = '/login',
   children,
 }) => {

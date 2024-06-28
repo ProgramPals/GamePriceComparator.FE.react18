@@ -1,26 +1,17 @@
-*, ::after, ::before {
-  border: 0 solid #e5e7eb;
-  border-color: rgb(229 231 235);
-}
-
-* {
-  border-color: #27272a;
-}
-
 button,
 input,
 optgroup,
 select,
 textarea {
-  padding:0;
-  margin:0;
-  font-family:inherit;
-  font-size:100%;
-  font-variation-settings:inherit;
-  font-weight:inherit;
-  font-feature-settings:inherit;
-  line-height:inherit;
-  color:inherit
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: 100%;
+  font-variation-settings: inherit;
+  font-weight: inherit;
+  font-feature-settings: inherit;
+  line-height: inherit;
+  color: inherit
 }
 
 [role="button"], button {

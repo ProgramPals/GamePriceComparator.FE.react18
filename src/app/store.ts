@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import type { Action, ThunkAction } from '@reduxjs/toolkit'
-import { Auth } from '../features/AuthSlice'
+import { Auth } from '../features/user/api/AuthSlice'
 export const store = configureStore({
   reducer: {
     Auth: Auth,

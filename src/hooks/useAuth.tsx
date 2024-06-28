@@ -1,5 +1,5 @@
-import { checkAuth } from '@/features/AuthSlice'
-import { useAppDispatch } from '@/app/hooks'
+import { checkAuth } from '@/features/user/api/AuthSlice'
+import { useAppDispatch } from '@/hooks/redux'
 
 import { useEffect } from 'react'
 

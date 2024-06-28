@@ -1,4 +1,4 @@
-import { useRouteError, isRouteErrorResponse } from 'react-router-dom'
+import { useRouteError, isRouteErrorResponse, Link } from 'react-router-dom'
 
 // handle unknown error types
 // https://github.com/remix-run/react-router/discussions/9628#discussioncomment-5555901
@@ -18,7 +18,19 @@ function errorMessage(error: unknown): string {
   }
 }
 
-export default function ErrorPage() {
+const GoBackLink = () => {
+  return (
+    <Link to="/" target="_blank">
+      Back to home.
+    </Link>
+  )
+}
+
+export default function ErrorPage({
+  cta = <GoBackLink />,
+}: {
+  cta?: React.ReactNode
+}) {
   const error = errorMessage(useRouteError())
   console.error(error)
 
@@ -29,6 +41,7 @@ export default function ErrorPage() {
       <p>
         <i>{error}</i>
       </p>
+      { cta }
     </div>
   )
 }

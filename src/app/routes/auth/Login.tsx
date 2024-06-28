@@ -1,10 +1,9 @@
-// Login.tsx
 import type React from 'react'
 import { useState } from 'react'
-import { useAppDispatch, useAppSelector } from '@/app/hooks'
+import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 
 import type { AppDispatch, RootState } from '../../store'
-import { login } from '../../../features/AuthSlice'
+import { login } from '../../../features/user/api/AuthSlice'
 
 import {
   Form,
