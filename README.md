@@ -26,6 +26,7 @@ git checkout -b ＜new-branch＞
 git add .
 
 # 4.1. during commit, pre-commit git hook will be executed with Husky
+# 4.2. try to use git in console, otherwise hooks might not run
 git commit -m "commit message"
 
 # 5. push changes
