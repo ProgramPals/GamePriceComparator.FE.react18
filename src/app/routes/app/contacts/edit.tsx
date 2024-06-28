@@ -5,7 +5,7 @@ import {
   redirect,
   useNavigate,
 } from 'react-router-dom'
-import { updateContact, getContact } from '@/app/contacts/api/contacts'
+import { updateContact, getContact } from '@/features/contacts/api/contacts'
 
 export async function loader({ params }) {
   const contact = await getContact(params.contactId)
