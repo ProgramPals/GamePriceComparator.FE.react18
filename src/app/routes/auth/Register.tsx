@@ -1,8 +1,8 @@
 import type React from 'react'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
-import type { AppDispatch, RootState } from '../../store'
-import { register } from '../../../features/user/api/AuthSlice'
+import type { AppDispatch, RootState } from '@/app/store'
+import { register } from '@/features/user/api/AuthSlice'
 
 import {
   redirect,
@@ -26,7 +26,7 @@ export function Component() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
+      <h2>Register form</h2>
       {error && <p aria-live="polite" style={{ color: 'red' }}>{error}</p>}
       <div>
         <label htmlFor="username">Username:</label>

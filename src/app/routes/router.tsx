@@ -11,29 +11,15 @@ export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route
       path="/"
-      lazy={() => import('./app/contacts/root')}
+      lazy={() => import('./app/index')}
       errorElement={<ErrorPage />}
     >
-      <Route errorElement={<ErrorPage />}>
-        <Route index lazy={() => import('./app/index')} />
-        <Route path="login" lazy={() => import('./auth/Login')} />
-        <Route path="register" lazy={() => import('./auth/Register')} />
-        <Route element={<ProtectedRoute />}>
-          <Route
-            path="contacts/:contactId"
-            lazy={() => import('./app/contacts/contact')}
-          />
-          <Route
-            path="contacts/:contactId/edit"
-            lazy={() => import('./app/contacts/edit')}
-          />
-          <Route
-            path="contacts/:contactId/destroy"
-            lazy={() => import('./app/contacts/delete')}
-            errorElement={<div>Oops! There was an error.</div>}
-          />
-          <Route path="logout" />
-        </Route>
+      <Route index element={<ErrorPage />} lazy={() => import('./app/homepage')} />
+      <Route path="otherpage" lazy={() => import('./app/otherpage')} />
+      <Route path="login" lazy={() => import('./auth/Login')} />
+      <Route path="register" lazy={() => import('./auth/Register')} />
+      <Route element={<ProtectedRoute />}>
+        <Route path="logout" lazy={() => import('./auth/Logout')} />
       </Route>
     </Route>,
   ),

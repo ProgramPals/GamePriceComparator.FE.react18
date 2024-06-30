@@ -1,0 +1,55 @@
+.switcher-wrap {
+  display: flex;
+  align-items: center;
+  margin: 0 0.5rem;
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .switch-theme-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    white-space: nowrap;
+    border-radius: calc(var(--radius) - 2px);
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+    transition-property: color, background-color, border-color,
+      text-decoration-color, fill, stroke;
+
+    &:hover {
+      color: hsl(var(--accent-foreground));
+      background-color: hsl(var(--accent));
+      border-radius: calc(var(--radius) - 2px);
+    }
+
+    .switch-icon {
+      position: absolute;
+      display: block;
+      width: 1.2rem;
+      height: 1.2rem;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 0.15s;
+      transition-property: all;
+
+      &.hide {
+        transform: scale(0);
+      }
+    }
+  }
+}

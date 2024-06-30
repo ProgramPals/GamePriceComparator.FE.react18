@@ -1,0 +1,17 @@
+// _buttons.scss
+.button {
+  padding: $spacing-unit * 2;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  border-radius: $spacing-unit / 2;
+  
+  &--primary {
+    color: white;
+    background-color: $primary-color;
+  }
+  
+  &--secondary {
+    color: white;
+    background-color: $secondary-color;
+  }
+}

@@ -1,0 +1,36 @@
+// *,
+// *::before,
+// *::after {
+//   outline: solid 1px;
+// }
+
+.context-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: hsl(var(--main-black-bg));
+
+  .main {
+    display: flex;
+    flex: 1 1 0%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    outline: 1px solid red;
+
+    .content-wrap {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0 2rem;
+      margin: 0 auto;
+
+      @media (width >= 1400px) {
+        max-width: 1400px;
+      }
+    }
+  }
+}
