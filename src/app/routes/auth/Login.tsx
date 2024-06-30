@@ -2,8 +2,8 @@ import type React from 'react'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 
-import type { AppDispatch, RootState } from '../../store'
-import { login } from '../../../features/user/api/AuthSlice'
+import type { AppDispatch, RootState } from '@/app/store'
+import { login } from '@/features/user/api/AuthSlice'
 
 import {
   Form,
@@ -45,49 +45,45 @@ export function Component() {
   }
 
   return (
-    <>
+    <Form method="post" onSubmit={handleSubmit}>
+      <h2>Login form</h2>
+      {
+        error
+        && (
+          <p aria-live="polite" style={{ color: 'red' }}>
+            {error}
+          </p>
+        )
+      }
       <div>
-        <Form method="post" onSubmit={handleSubmit}>
-          <h2>Login</h2>
-          {
-            error
-            && (
-              <p aria-live="polite" style={{ color: 'red' }}>
-                {error}
-              </p>
-            )
-          }
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input
-              // type="email"
-              type="string"
-              id="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              required
-              name="email"
-              aria-required="true"
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              required
-              name="password"
-              aria-required="true"
-            />
-          </div>
-          <button type="submit">
-            {isLoading ? 'Logging in...' : 'Login'}
-          </button>
-        </Form>
+        <label htmlFor="email">Email:</label>
+        <input
+          // type="email"
+          type="string"
+          id="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+          name="email"
+          aria-required="true"
+        />
       </div>
-    </>
+      <div>
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          required
+          name="password"
+          aria-required="true"
+        />
+      </div>
+      <button type="submit">
+        {isLoading ? 'Logging in...' : 'Login'}
+      </button>
+    </Form>
   )
 }
 

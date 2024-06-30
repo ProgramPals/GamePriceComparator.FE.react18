@@ -17,6 +17,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "typeRoots": ["./src/types"],
     "types": ["vite/client"] // alias tpying for vite-env.d.ts
   },
   "references": [{ "path": "./tsconfig.node.json" }]

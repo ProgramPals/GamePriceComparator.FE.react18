@@ -59,7 +59,7 @@ export const login = createAsyncThunk(
       return response
     }
     catch (error) {
-      return rejectWithValue('Login failed')
+      return rejectWithValue('Login failed. Please check your credentials and try again.')
     }
   },
 )
@@ -72,7 +72,7 @@ export const register = createAsyncThunk(
       return response
     }
     catch (error) {
-      return rejectWithValue('Registration failed')
+      return rejectWithValue('Registration failed. Please try again later.')
     }
   },
 )
@@ -81,10 +81,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    logout: (state) => {
-      state.user = null
-      state.token = null
-    },
+    logout: () => initialState,
     checkAuth: (state) => {
       const TOKEN_KEY = 'PC_account_data_'
       const storedValue = localStorage.getItem(TOKEN_KEY)
