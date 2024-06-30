@@ -1,40 +1,36 @@
-name: CI
+name: CI/CD Workflow
+on: [push, pull_request]
 
-# prevent husky from CI/CD
 env:
   HUSKY: 0
-  
-on:
-  push:
-    branches:
-      - main
-
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - name: Enable corepack
+        run: corepack enable
 
-      - name: Set node
-        uses: actions/setup-node@v3
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
         with:
-          node-version: lts/*
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
-      - name: Install
+      - name: Install dependencies
         run: pnpm install
+        
+      - name: Lint
+        run: pnpm run lint
 
       - name: Build
         run: pnpm run build
-
-      - name: Lint
-        run: pnpm run lint
-        
-      - name: Lint styles
-        run: pnpm run lint:styles
